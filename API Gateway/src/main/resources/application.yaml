@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: API Gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-service-route
+              uri: http://auth-service:4004
+              predicates:
+                - Path=/api/auth/**
+              filters:
+                - StripPrefix=1
+
+            - id: patient-management
+              uri: http://patient-management:4000
+              predicates:
+                - Path=/api/patients/**
+              filters:
+                - StripPrefix=1
+                - JwtValidate
+
+            - id: api-docs-patient-management
+              uri: http://patient-management:4000
+              predicates:
+                - Path=/api-docs/patients
+              filters:
+                - RewritePath=/api-docs/patients, /v3/api-docs
+
+            - id: api-docs-auth-service
+              uri: http://auth-service:4004
+              predicates:
+                - Path=/api-docs/auth
+              filters:
+                - RewritePath=/api-docs/auth, /v3/api-docs
+
+server:
+  port: 4003

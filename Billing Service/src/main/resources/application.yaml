@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Billing Service
+
+  grpc:
+    server:
+      port: 9000
+
+server:
+  port: 4001
