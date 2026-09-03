@@ -114,7 +114,7 @@ Run Options: --network internal
 
 | Variable | Value |
 | --- | --- |
-| JWT_SECRET | 5aa58ce08d35965baaf7bce246a88f10ccf286f3 |
+| JWT_SECRET |  |
 | SPRING_DATASOURCE_URL | jdbc:postgresql://auth-service-db:5432/db |
 | SPRING_DATASOURCE_USERNAME |  |
 | SPRING_DATASOURCE_PASSWORD |  |
